@@ -1,6 +1,10 @@
-filename = ARGV[0]
-file_xml = File.open(filename, "r")
+require 'nokogiri'
+require 'json'
 
-file_xml.each do |line|
-  print line
+filename = ARGV[0]
+file = File.open(filename, "r")
+
+file.each do |line|
+  print Nokogiri::XML(line).xpath('*')
 end
+
